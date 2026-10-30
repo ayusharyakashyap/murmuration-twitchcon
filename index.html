@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090a10" />
+  <title>Murmuration — a world made by chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Murmuration home"><span class="brand-mark"><i></i><i></i><i></i><i></i><i></i></span><span>MURMURATION</span></a>
+      <div class="stream-pill"><span class="live-dot"></span><span id="streamLabel">DEMO CHANNEL</span><span class="pill-divider"></span><span id="modeLabel">SANDBOX</span></div>
+      <div class="top-actions"><button id="shareBtn" class="quiet-btn">↗ <span>Share overlay</span></button><button id="connectBtn" class="connect-btn"><span class="twitch-glyph">◈</span> Connect Twitch</button></div>
+    </header>
+
+    <main class="workspace">
+      <aside class="rail">
+        <div class="rail-label">YOUR STUDIO</div>
+        <button class="rail-item active"><span class="rail-icon">◉</span><span>Live canvas</span><kbd>01</kbd></button>
+        <button class="rail-item" id="ritualNav"><span class="rail-icon">✳</span><span>Rituals</span><kbd>02</kbd></button>
+        <div class="rail-spacer"></div>
+        <div class="rail-card"><span class="rail-card-icon">✦</span><b>A world made together.</b><p>Every message is a particle. Every moment belongs to chat.</p><span class="rail-card-foot">BUILT FOR THE LIVE MOMENT</span></div>
+        <div class="rail-profile"><div class="avatar">M</div><div><b>Creator studio</b><small>Local workspace</small></div><span class="dots">•••</span></div>
+      </aside>
+
+      <section class="main-column">
+        <div class="page-heading"><div><div class="eyebrow"><span class="tiny-star">✳</span> COMMUNITY IN MOTION</div><h1>One chat.<br/><em>One living thing.</em></h1><p class="subhead">Your community is the current. Watch it take shape.</p></div><div class="heading-stat"><div class="tiny-label">THE FLOCK</div><div><span class="stat-num" id="particleCount">0</span><span class="stat-unit">spores</span></div><div class="stat-caption"><span class="pulse-dot"></span><span id="energyLabel">waiting for a spark</span></div></div></div>
+
+        <div class="canvas-wrap">
+          <canvas id="flockCanvas" aria-label="A living flock of light particles created by Twitch chat"></canvas>
+          <div class="canvas-grain"></div>
+          <div class="canvas-header"><div><span class="canvas-live"><i></i> LIVE CANVAS</span><span class="canvas-meta">· COMMUNITY FIELD #001</span></div><button id="fullscreenBtn" class="icon-btn" title="Fullscreen">⛶</button></div>
+          <div class="canvas-center"><div class="canvas-orbit orbit-one"></div><div class="canvas-orbit orbit-two"></div><div class="center-core"></div></div>
+          <div class="canvas-footer"><span>THE GATHERING</span><span id="lastEvent">A quiet sky, ready for you</span><span>∞</span></div>
+          <div class="canvas-toast" id="toast"><span class="toast-glyph">✳</span><span id="toastText">The flock is listening</span></div>
+        </div>
+
+        <div class="below-canvas"><div class="field-caption"><span class="caption-swatch"></span><span>Each chat message becomes a luminous being.</span></div><button id="copyLink" class="copy-link">↗ &nbsp;Copy OBS overlay link</button></div>
+
+        <div class="lower-grid">
+          <div class="panel ritual-panel"><div class="panel-head"><div><div class="eyebrow">LET CHAT STEER</div><h2>Rituals</h2></div><span class="subtle-tag">TYPE IN CHAT</span></div><div class="ritual-list"><button class="ritual" data-ritual="gather"><span class="ritual-symbol gather">◎</span><span><b>!gather</b><small>Pull the flock into orbit</small></span><span class="ritual-arrow">↗</span></button><button class="ritual" data-ritual="bloom"><span class="ritual-symbol bloom">✳</span><span><b>!bloom</b><small>Release a burst of color</small></span><span class="ritual-arrow">↗</span></button><button class="ritual" data-ritual="ripple"><span class="ritual-symbol ripple">⌁</span><span><b>!ripple</b><small>Send a wave through everyone</small></span><span class="ritual-arrow">↗</span></button></div><div class="ritual-note"><span>✦</span> Rituals need 3 unique voices to awaken.</div></div>
+          <div class="panel pulse-panel"><div class="panel-head"><div><div class="eyebrow">THE ROOM, RIGHT NOW</div><h2>Chat pulse</h2></div><span class="connection-state"><i></i><span id="chatStatus">DEMO</span></span></div><div class="pulse-content"><div class="pulse-quote-mark">“</div><p id="pulseLine">The flock is waiting for its first words.</p><div class="pulse-bottom"><div class="voice-stack" id="voiceStack"><span>·</span></div><span id="voiceCount">0 voices</span><span class="pulse-divider">/</span><span id="messageCount">0 messages</span></div></div><div class="pulse-footer"><span class="tiny-live-line"></span><span>REFRESHES WITH EVERY MESSAGE</span></div></div>
+        </div>
+        <footer class="page-footer"><span>MURMURATION <i>×</i> TWITCH COMMUNITY</span><span>A small experiment in being together.</span><span>CODEX × TWITCHCON 2026</span></footer>
+      </section>
+
+      <aside class="right-panel">
+        <div class="right-head"><div><div class="eyebrow">YOUR SOUNDSTAGE</div><h2>Shape the field</h2></div><button id="resetBtn" class="reset-btn" title="Reset field">↻</button></div>
+        <div class="control-block"><div class="control-title">BIOME <span>THE FEEL OF YOUR WORLD</span></div><div class="biome-grid"><button class="biome active" data-biome="aurora"><span class="biome-preview aurora-preview"><i></i></span><span>Aurora</span></button><button class="biome" data-biome="ember"><span class="biome-preview ember-preview"><i></i></span><span>Ember</span></button><button class="biome" data-biome="ocean"><span class="biome-preview ocean-preview"><i></i></span><span>Deep sea</span></button><button class="biome" data-biome="meadow"><span class="biome-preview meadow-preview"><i></i></span><span>Moon garden</span></button></div></div>
+        <div class="control-block density-block"><div class="control-title">FIELD DENSITY <span id="densityValue">68%</span></div><input id="densitySlider" type="range" min="24" max="100" value="68"/><div class="range-ends"><span>SPARSE</span><span>THRIVING</span></div></div>
+        <div class="control-block"><div class="control-title">COLLECTIVE ENERGY <span class="energy-tag"><i></i> <span id="energyPercent">0%</span></span></div><div class="energy-track"><span id="energyBar"></span><i class="energy-marker"></i></div><div class="energy-hint" id="energyHint">A few voices can move a universe.</div></div>
+
+        <div class="right-divider"></div>
+        <div class="activity-head"><div><div class="eyebrow">RECENT SPARKS</div><h2>Chat activity</h2></div><span class="activity-live"><i></i> LIVE</span></div>
+        <div id="chatFeed" class="chat-feed"><div class="empty-feed"><span>✧</span><p>Every voice leaves a trace.<br/>Say hello to get things moving.</p></div></div>
+        <div class="try-demo"><div class="demo-orb">✳</div><div><b>See the flock come alive</b><p>Try a few messages in the sandbox.</p></div><button id="demoBtn">Play demo ↗</button></div>
+
+        <div class="obs-card"><div class="obs-icon">▣</div><div><b>Made for your stream</b><p>Add the transparent canvas to OBS as a browser source.</p><button id="obsHelp">HOW TO ADD IT <span>↗</span></button></div></div>
+      </aside>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="connectModal" aria-hidden="true"><div class="connect-modal"><button id="modalClose" class="modal-close">×</button><div class="modal-kicker"><span>◈</span> TWITCH × MURMURATION</div><h2>Bring your chat<br/>into the flock.</h2><p class="modal-copy">Connect a Twitch channel to let its live chat shape this world. Your Twitch token stays in this browser and is sent only to Twitch.</p><label for="clientId">TWITCH APP CLIENT ID</label><input id="clientId" placeholder="Your registered app's client ID" autocomplete="off"/><label for="channelName">CHANNEL TO LISTEN TO</label><input id="channelName" placeholder="e.g. twitch" autocomplete="off"/><p class="modal-help">Register a Twitch app with <b>http://localhost:4173/</b> as an OAuth redirect URL. Use User Token + <code>user:read:chat</code> access. Listening to your own channel works out of the box.</p><details class="ai-details"><summary>✦ Add an OpenAI key for AI narration <span>OPTIONAL</span></summary><input id="openaiKey" type="password" placeholder="sk-… (kept in memory for this session)" autocomplete="off"/><small>Once chat has spoken, AI turns its shared mood into a one-line collective memory. Your key and chat messages are sent to OpenAI for this feature; neither is saved by Murmuration.</small></details><button id="authorizeBtn" class="authorize-btn"><span>◈</span> Continue with Twitch</button><div class="modal-foot">Uses Twitch EventSub WebSockets · credentials are session-only</div></div></div>
+  <div class="toast-pop" id="popToast"></div>
+  <div class="overlay-label" id="overlayLabel"><span class="brand-mark"><i></i><i></i><i></i><i></i><i></i></span><span>MURMURATION</span><small>THE CHAT IS THE CURRENT</small><span class="overlay-count" id="overlayCount">0 IN THE FLOCK</span></div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
