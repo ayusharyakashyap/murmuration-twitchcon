@@ -25,9 +25,23 @@ We used OpenAI Codex to shape the experience, build its interface and animated c
 
 Before recording, replace the sandbox with a real Twitch channel and confirm the account used for authorization has permission to read that chat. Keep the Codex window visible for the short build walkthrough.
 
+## YouTube upload metadata
+
+**Title:** Murmuration — One Twitch Chat, One Living World | Codex × TwitchCon Hackathon
+
+**Description:**
+
+Murmuration turns Twitch chat into a shared, living flock. Three distinct chatters can awaken a ritual together, and optional OpenAI narration turns a burst of chat into a collective memory.
+
+Built with OpenAI Codex for the Codex × TwitchCon Hackathon.
+
+Code: https://github.com/ayusharyakashyap/murmuration-twitchcon
+
+#Twitch #TwitchCon #OpenAI #Codex #Hackathon
+
 ## Submission checklist
 
-- Public code repository URL (or invite `testing@devpost.com` to a private GitHub or GitLab repository).
+- Public code repository URL: https://github.com/ayusharyakashyap/murmuration-twitchcon (or invite `testing@devpost.com` to a private GitHub or GitLab repository).
 - Public YouTube demo video, maximum three minutes.
 - This project description, adjusted if the final demo changes any features.
 - Codex session ID for the thread where most of the project was built: `01a18d88-10dc-75f0-9293-d0e56111f9d3`.
